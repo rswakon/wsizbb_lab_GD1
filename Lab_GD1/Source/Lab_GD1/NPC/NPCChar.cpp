@@ -24,10 +24,5 @@ void ANPCChar::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
-void ANPCChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
 
