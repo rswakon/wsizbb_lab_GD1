@@ -34,7 +34,7 @@ protected:
 public:
 	void SetTargetEnemy(APawn* NewTarget);
 	void SetShouldWander(bool ShouldWander);
-	class APawn* GetTargetEnemy();
+	class AActor* GetTargetEnemy();
 	/** Returns BehaviorComp subobject **/
 	FORCEINLINE class UBehaviorTreeComponent* GetBehaviorComp() const { return BTComp; }
 

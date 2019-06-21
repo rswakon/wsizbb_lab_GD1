@@ -51,11 +51,11 @@ void ANPCAIController::SetTargetEnemy(APawn* NewTarget)
  
  }
 
-APawn* ANPCAIController::GetTargetEnemy()
+ AActor* ANPCAIController::GetTargetEnemy()
 {
 	if (BBComp)
 	{
-		return Cast<APawn>( BBComp->GetValueAsObject(TargetEnemyKeyName));
+		return Cast<AActor>( BBComp->GetValueAsObject(TargetEnemyKeyName));
 	}
 
 	return nullptr;
