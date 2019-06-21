@@ -15,9 +15,13 @@ class LAB_GD1_API ANPCAIController : public AAIController
 	GENERATED_BODY()
 public:
 	ANPCAIController();
-	//UPROPERTY(EditDefaultsOnly)
-	//	class UPawnSensingComponent* PawnSensingComp;
 
+	UPROPERTY(EditDefaultsOnly, Category = "AI")
+		FName TargetEnemyKeyName;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "AI")
+		FName ShouldWanderKeyName;
+	
 	UPROPERTY(transient)
 		class UBlackboardComponent *BBComp;
 
@@ -27,10 +31,13 @@ public:
 protected:
 	virtual void OnPossess(APawn* InPawn) override;
 
-private:
-
-	uint8 NPCKeyID;
 public:
+	void SetTargetEnemy(APawn* NewTarget);
+	void SetShouldWander(bool ShouldWander);
+	class APawn* GetTargetEnemy();
+	/** Returns BehaviorComp subobject **/
+	FORCEINLINE class UBehaviorTreeComponent* GetBehaviorComp() const { return BTComp; }
 
+	  
 	FORCEINLINE class UBlackboardComponent* GetBlackboardComp() const { return BBComp; }
 };

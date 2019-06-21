@@ -4,14 +4,18 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "BehaviorTree/Blackboard/BlackboardKeyAllTypes.h"
-#include "Runtime/AIModule/Classes/Perception/PawnSensingComponent.h"
+#include "Lab_GD1Character.h"
+
 #include "NPCChar.h"
 
+
+
 ANPCAIController::ANPCAIController() {
-	//PawnSensingComp = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("PawnSensingComponent"));
 	BTComp = CreateDefaultSubobject<UBehaviorTreeComponent>(TEXT("BehaviorComponent"));
 	BBComp = CreateDefaultSubobject<UBlackboardComponent>(TEXT("BlackboardComponent"));
+	TargetEnemyKeyName = "TargetEnemy";
+	ShouldWanderKeyName = "ShouldWander";
+
 }
 
 void ANPCAIController::OnPossess(APawn *myPawn) {
@@ -21,11 +25,38 @@ void ANPCAIController::OnPossess(APawn *myPawn) {
 
 	if (NPC && NPC->NPCBT) {
 		BBComp->InitializeBlackboard(*NPC->NPCBT->BlackboardAsset);
-
-		NPCKeyID = BBComp->GetKeyID("PlayerPosition");
-
 		BTComp->StartTree(*NPC->NPCBT);
 
 	}
 
+}
+
+
+
+
+void ANPCAIController::SetTargetEnemy(APawn* NewTarget)
+{
+	if (BBComp)
+	{
+		BBComp->SetValueAsObject(TargetEnemyKeyName, NewTarget);
+	}
+}
+
+ void ANPCAIController::SetShouldWander(bool ShouldWander)
+ {
+	 if (BBComp)
+	 {
+		 BBComp->SetValueAsBool(ShouldWanderKeyName, ShouldWander);
+	 }
+ 
+ }
+
+APawn* ANPCAIController::GetTargetEnemy()
+{
+	if (BBComp)
+	{
+		return Cast<APawn>( BBComp->GetValueAsObject(TargetEnemyKeyName));
+	}
+
+	return nullptr;
 }

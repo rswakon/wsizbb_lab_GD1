@@ -16,13 +16,20 @@ public:
 	ANPCChar();
 	UPROPERTY(EditAnyWhere, Category = "AIBehavior")
 		class UBehaviorTree *NPCBT;
+	UPROPERTY(VisibleAnywhere, Category = "AI")
+		class UPawnSensingComponent* PawnSensingComp;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UFUNCTION()
+		void OnSeePlayer(APawn* Pawn);
 	 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override; 
+private:
 
-
+	/* Last time the player was is spotted */
+	float LastSeenTime;
+	float SenseTimeOut;
 };
