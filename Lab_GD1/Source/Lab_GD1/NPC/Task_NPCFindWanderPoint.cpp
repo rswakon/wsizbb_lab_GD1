@@ -1,9 +1,9 @@
 
 
 #include "Task_NPCFindWanderPoint.h"
-#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
-#include "Runtime/AIModule/Classes/BehaviorTree/BehaviorTreeComponent.h"
-#include "Runtime/AIModule/Classes/BehaviorTree/BlackboardComponent.h"
+#include "Classes/Kismet/GameplayStatics.h"
+#include "Classes/BehaviorTree/BehaviorTreeComponent.h"
+#include "Classes/BehaviorTree/BlackboardComponent.h"
 #include "NPCAIController.h"
 #include "NPCTargetPoint.h"
 

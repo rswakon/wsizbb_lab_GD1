@@ -9,6 +9,6 @@ public class Lab_GD1 : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "AIModule", "LandscapeEditor", "Landscape",
-            "GameplayTasks","GameplayTasksEditor" });
+            "GameplayTasks","GameplayTasksEditor", "NavigationSystem"});
     }
 }
